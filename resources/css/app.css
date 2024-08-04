@@ -6,7 +6,7 @@
 
 .card {
     position: relative;
-    width: 150px;
+    width: 100px;
     margin: 0 10px;
     overflow: hidden;
     border-radius: 10px;
@@ -14,13 +14,13 @@
 }
 
 .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.9);
 }
 
 .card img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .card .rank {

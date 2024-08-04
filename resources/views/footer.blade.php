@@ -1,3 +1,4 @@
-<div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>Footer</p>
-  </div>
+<div class="text-center p-3 bg-dark text-white">
+  &copy; 2024 adhika. All Rights Reserved.
+</div>
+</footer>

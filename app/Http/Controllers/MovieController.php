@@ -16,6 +16,43 @@ class MovieController extends Controller
         $this->imageBaseUrl = env('MOVIE_DB_IMAGE_BASE_URL');
     }
 
+
+public function movies()
+{
+    // Mengambil data film populer
+    $moviesResponse = Http::get("{$this->baseUrl}/movie/popular", [
+        'api_key' => $this->apiKey,
+        'language' => 'en-US',
+        'page' => 1,
+    ]);
+
+    // Mendapatkan 10 film teratas
+    $movies = [];
+    if ($moviesResponse->successful()) {
+        $movies = collect($moviesResponse->json()['results'])->take(10);
+    }
+
+    // Mengambil data TV show populer
+    $tvShowsResponse = Http::get("{$this->baseUrl}/tv/popular", [
+        'api_key' => $this->apiKey,
+        'language' => 'en-US',
+        'page' => 1,
+    ]);
+
+    // Mendapatkan 10 TV show teratas
+    $tvShows = [];
+    if ($tvShowsResponse->successful()) {
+        $tvShows = collect($tvShowsResponse->json()['results'])->take(10);
+    }
+
+    // Mengirimkan data ke view
+    return view('movies', [
+        'movies' => $movies,
+        'tvShows' => $tvShows,
+        'imageBaseUrl' => $this->imageBaseUrl
+    ]);
+}
+
     public function index()
     {
         // Mengambil data film populer
@@ -66,6 +103,8 @@ class MovieController extends Controller
             'tvShows' => $tvShows,
             'banner' => $banner,
             'imageBaseURL' => $this->imageBaseUrl,
+
+            
         ]);
     }
 }
