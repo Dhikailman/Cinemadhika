@@ -1,3 +1,3 @@
 <div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>Terimakasih</p>
+    <p>Footer</p>
   </div>
