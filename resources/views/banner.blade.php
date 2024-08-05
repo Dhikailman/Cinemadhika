@@ -7,7 +7,7 @@
             <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
                 <div>
                     <h1 class="text-5xl font-bold mb-4">{{ $bannerItem->title }}</h1>
-                    <p class="text-lg mb-6">{{ $bannerItem->overview }}</p>
+                    <p class="text-lg mb-6 ml-3 mr-10">{{ $bannerItem->overview }}</p>
                     <div>
                         @if ($bannerItem->trailer_url)
                             <button class="btn btn-light text-black font-semibold py-2 px-4 rounded-full mr-4" data-toggle="modal" data-target="#trailerModal{{ $bannerItem->id }}">Putar</button>
@@ -20,6 +20,8 @@
             </div>
         </div>
     @endforeach
+
+        
 </div>
 {{-- Banner End --}}
 

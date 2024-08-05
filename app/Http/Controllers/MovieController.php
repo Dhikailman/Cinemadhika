@@ -53,7 +53,7 @@ public function movies()
     ]);
 }
 
-public function showss()
+public function shows()
 {
     // Mengambil data film populer
     $moviesResponse = Http::get("{$this->baseUrl}/movie/popular", [
@@ -128,7 +128,7 @@ public function showss()
 
         $banner = [];
         if ($bannerResponse->successful()) {
-            $banner = collect($bannerResponse->json()['results'])->take(3)->map(function ($item) {
+            $banner = collect($bannerResponse->json()['results'])->take(4)->map(function ($item) {
                 return (object) $item;
             });
         }

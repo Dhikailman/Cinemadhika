@@ -1,7 +1,7 @@
 {{-- Header Start --}}
 
 <div class="p-5 bg-dark text-white    text-center">
-    <a href="" class=" text-4xl font-poppins text-develobe-900  hover:text-gray-200 duration-200 font-bold ">Trending TV Shows This Week</a>
+    <a href="" class=" text-4xl font-poppins text-develobe-900  hover:text-gray-200 duration-200 font-bold ">Top 10 Trending TV Shows This Week</a>
 
   </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>CINEMA XXI</title>
+  <title>Netflix</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +32,7 @@
     // JavaScript untuk mengontrol slideshow
     let slideIndex = 0;
     showSlides();
+    
 
     function showSlides() {
         let slides = document.querySelectorAll(".slide");
@@ -51,6 +52,8 @@
     function moveSlide(n) {
         plusSlides(n);
     }
+
+    
 </script>
 
 </body>
