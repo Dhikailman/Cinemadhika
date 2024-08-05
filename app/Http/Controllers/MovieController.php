@@ -1,4 +1,4 @@
-<?php
+<?Php
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
@@ -53,6 +53,42 @@ public function movies()
     ]);
 }
 
+public function showss()
+{
+    // Mengambil data film populer
+    $moviesResponse = Http::get("{$this->baseUrl}/movie/popular", [
+        'api_key' => $this->apiKey,
+        'language' => 'en-US',
+        'page' => 1,
+    ]);
+
+    // Mendapatkan 10 film teratas
+    $movies = [];
+    if ($moviesResponse->successful()) {
+        $movies = collect($moviesResponse->json()['results'])->take(10);
+    }
+
+    // Mengambil data TV show populer
+    $tvShowsResponse = Http::get("{$this->baseUrl}/tv/popular", [
+        'api_key' => $this->apiKey,
+        'language' => 'en-US',
+        'page' => 1,
+    ]);
+
+    // Mendapatkan 10 TV show teratas
+    $tvShows = [];
+    if ($tvShowsResponse->successful()) {
+        $tvShows = collect($tvShowsResponse->json()['results'])->take(10);
+    }
+
+    // Mengirimkan data ke view
+    return view('shows', [
+        'movies' => $movies,
+        'tvShows' => $tvShows,
+        'imageBaseUrl' => $this->imageBaseUrl
+    ]);
+}
+
     public function index()
     {
         // Mengambil data film populer
@@ -97,14 +133,30 @@ public function movies()
             });
         }
 
+        // Mengambil URL trailer untuk setiap banner item
+        foreach ($banner as $item) {
+            $videosResponse = Http::get("{$this->baseUrl}/movie/{$item->id}/videos", [
+                'api_key' => $this->apiKey,
+                'language' => 'en-US',
+            ]);
+
+            if ($videosResponse->successful()) {
+                $videos = collect($videosResponse->json()['results']);
+                $trailer = $videos->firstWhere('type', 'Trailer');
+                if ($trailer) {
+                    $item->trailer_url = "https://www.youtube.com/embed/{$trailer['key']}";
+                } else {
+                    $item->trailer_url = null;
+                }
+            }
+        }
+
         // Mengirimkan data ke view
         return view('home', [
             'movies' => $movies,
             'tvShows' => $tvShows,
             'banner' => $banner,
             'imageBaseURL' => $this->imageBaseUrl,
-
-            
         ]);
     }
 }

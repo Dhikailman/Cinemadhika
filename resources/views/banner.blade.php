@@ -9,16 +9,40 @@
                     <h1 class="text-5xl font-bold mb-4">{{ $bannerItem->title }}</h1>
                     <p class="text-lg mb-6">{{ $bannerItem->overview }}</p>
                     <div>
-                        <a href="https://www.youtube.com/watch?v=73_1biulkYk">
-                        <button class="btn btn-light text-black font-semibold py-2 px-4 rounded-full mr-4">Putar</button></a>
-                        <a href="https://en.wikipedia.org/wiki/Deadpool_%26_Wolverine">
-                        <button class="btn btn-dark text-white font-semibold py-2 px-4 rounded-full">Selengkapnya</button></a>
+                        @if ($bannerItem->trailer_url)
+                            <button class="btn btn-light text-black font-semibold py-2 px-4 rounded-full mr-4" data-toggle="modal" data-target="#trailerModal{{ $bannerItem->id }}">Putar</button>
+                        @endif
+                        <a href="https://en.wikipedia.org/wiki/{{ urlencode($bannerItem->title) }}">
+                            <button class="btn btn-dark text-white font-semibold py-2 px-4 rounded-full">Selengkapnya</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     @endforeach
-  
-  
-  </div>
-  {{-- Banner End --}}
+</div>
+{{-- Banner End --}}
+
+{{-- Modals Trailers --}}
+@foreach ($banner as $bannerItem)
+    @if ($bannerItem->trailer_url)
+        <div class="modal fade" id="trailerModal{{ $bannerItem->id }}" tabindex="-1" role="dialog" aria-labelledby="trailerModalLabel{{ $bannerItem->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="trailerModalLabel{{ $bannerItem->id }}">{{ $bannerItem->title }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe width="100%" height="315" src="{{ $bannerItem->trailer_url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+@endforeach

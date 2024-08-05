@@ -18,11 +18,11 @@
 
 
 {{-- Header Start --}}
-@include('headermovies')
+@include('headershows')
 {{-- Header End --}}
 
 {{-- Content Start --}}
-@include('contentmovies')
+@include('contentshows')
 {{-- Content End --}}
 
 <!-- footer Start -->

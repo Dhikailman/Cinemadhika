@@ -15,7 +15,7 @@
                     $movieImage = "{$imageBaseURL}/w400{$movieItem->poster_path}";
                 @endphp
                 <a href="movie/{{$movieID}}" class="group">
-                    <div class="min-w-[232px] min-h-[428px] bg-black drop-shadow-xl
+                    <div class="min-w-[232px] min-h-[428px] bg-black drop-shadow-2xl
                         group-hover:drop-shadow-[0_0px_8px_rgba(0,0,0,0.5)] rounded-[32px]
                          p-5 flex flex-col mr-8 duration-100">
                         <div class="rounded-[32px] overflow-hidden">
@@ -64,7 +64,7 @@
                     $showImage = "{$imageBaseURL}/w400{$showItem->poster_path}";
                 @endphp
                 <a href="show/{{$showID}}" class="group">
-                    <div class="min-w-[232px] min-h-[428px] bg-black drop-shadow-xl
+                    <div class="min-w-[232px] min-h-[428px] bg-black drop-shadow-2xl
                         group-hover:drop-shadow-[0_0px_8px_rgba(0,0,0,0.5)] rounded-[32px]
                          p-5 flex flex-col mr-8 duration-100">
                         <div class="rounded-[32px] overflow-hidden">
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="text-center mt-2 mb-5">
-        <a href="/detail" class="btn btn-light font-poppins">Show More</a>
+        <a href="/shows" class="btn btn-light font-poppins">Show More</a>
     </div>
 </div>
 {{-- Trending TV Shows End --}}
